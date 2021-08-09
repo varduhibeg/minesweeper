@@ -1,0 +1,28 @@
+<div *ngIf="!lost && !win">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+    <ng-container *ngFor=" let col of displayedColumns" [matColumnDef]=col>
+      <td mat-cell *matCellDef="let element"
+          (click)="onCellClick({element: element, col: col})"
+          (contextmenu)="onRightClick($event, {element: element, col: col})"
+          (dblclick)="onDoubleClick($event, {element: element, col: col})">
+        <mat-icon *ngIf="showFlag({element: element, col: col})">flag</mat-icon>
+        <span *ngIf="showNumber({element: element, col: col})" class='material-icons-sharp'
+              [ngClass]="{'blue' : element[col] === 1,  'green': element[col] === 2, 'red' : element[col] === 3}">{{element[col]}}</span>
+      </td>
+    </ng-container>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<div *ngIf="lost">
+  <p>Game Over</p>
+</div>
+<div *ngIf="win">
+  <p>You Won</p>
+</div>
+<div>
+  <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="initGame()" style="left: 50%;">
+    <mat-icon>replay</mat-icon>
+  </button>
+</div>
+<app-timer [clicked]="refresh" [stopped]="win || lost"></app-timer>

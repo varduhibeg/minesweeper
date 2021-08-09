@@ -1,0 +1,46 @@
+table {
+  width: 50%;
+}
+
+td {
+  width: 4%;
+  position: relative;
+}
+
+td:after {
+  content: '';
+  display: block;
+  margin-top: 1px;
+}
+
+td .content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: gold;
+}
+
+.mat-cell {
+  font-size: 25px;
+  min-height: 48px;
+  text-align: center;
+  border-right: 1px solid #e0e0e0;
+}
+
+.red {
+  color: red;
+}
+
+.blue {
+  color: blue;
+}
+
+.green {
+  color: green;
+}
+
+.grey {
+  background-color: grey;
+}
